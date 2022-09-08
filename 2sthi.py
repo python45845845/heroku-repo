@@ -27,14 +27,7 @@ for i in range(s,e):
         try :
             rgnames = driver.find_element(By.XPATH,"/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/h4[1]")
             rehm = rgnames.text
-            def send_msg_on_telegram(rehm):
-                telegram_api_url = f"https://api.telegram.org/bot5672053615:AAGRLsunpPWBSpldtOG32Gle_C_WTfrgNYo/sendMessage?chat_id=@himnandiandu&text={rehm}{a}"
-                tel_resp = requests.get(telegram_api_url)
-                if tel_resp.status_code == 200:
-                    print ("Notification has been sent on Telegram")
-                else:
-                    print ("Could not send Message")
-            send_msg_on_telegram(rehm)
+            print(rehm)
         except :
             pass
     driver.find_element(By.XPATH,"//input[contains(@id,'reg')]").clear()
