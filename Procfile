@@ -1,1 +1,1 @@
-web: python 2sthi.py
+web: python 1sthi.py
