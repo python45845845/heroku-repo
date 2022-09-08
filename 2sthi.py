@@ -11,7 +11,7 @@ op.add_argument("--headless")
 op.add_argument("--no-sandbox")
 op.add_argument("--disable-dev-shm-usage")
 
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),  options=options)
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),  options=op)
 driver.get("https://glauniversity.in:8070/LeadManagement/ShowResult")
 
 s,e = 9080060,9080070
