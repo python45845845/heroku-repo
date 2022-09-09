@@ -1,1 +1,1 @@
-web: python 2sthi.py
+worker: python 2sthi.py
