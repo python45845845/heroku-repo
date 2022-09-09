@@ -1,23 +1,22 @@
-from selenium import webdriver
 import os
 import requests
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium import webdriver
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-tele_auth_token = "5672053615:AAGRLsunpPWBSpldtOG32Gle_C_WTfrgNYo" # Authentication token provided by Telegram bot
-tel_group_id = "himnandiandu"  
-msg = f"msg reci atubu "
-def send_msg_on_telegram(msg):
-    telegram_api_url = f"https://api.telegram.org/bot{tele_auth_token}/sendMessage?chat_id=@{tel_group_id}&text={msg}"
-    tel_resp = requests.get(telegram_api_url)
+driver.get("https://glauniversity.in:8070/LeadManagement/ShowResult")
+driver.implicitly_wait(10)
+driver.find_element(By.XPATH,"//input[contains(@id,'reg')]").send_keys("07070126")
+driver.find_element(By.XPATH,"//input[contains(@class,'btn')]").click()
+rgnames = driver.find_element(By.XPATH,"/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/h4[1]")
 
-    if tel_resp.status_code == 200:
-        print ("Notification has been sent on Telegram")
-    else:
-        print ("Could not send Message")
-
-send_msg_on_telegram(msg)
-
+print (rgnames.text)
